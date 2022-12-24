@@ -1,28 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Rafael
- */
 public class Song {
+
+    private String artist;
     private String name;
-    private int length;
-    
-    public Song(String name, int length){
+    private int durationInSeconds;
+
+    public Song(String artist, String name, int durationInSeconds) {
+        this.artist = artist;
         this.name = name;
-        this.length = length;
+        this.durationInSeconds = durationInSeconds;
     }
     
-    public String name() {
-        return this.name;
+    public boolean equals(Object compared){
+        if (this == compared){
+            return true;
+        }
+        if (!(compared instanceof Song)) {
+            return false;
+        }
+        Song comparedSong = (Song) compared;
+        
+        if (this.artist.equals(comparedSong.artist) &&
+            this.name.equals(comparedSong.name) &&
+            this.durationInSeconds==comparedSong.durationInSeconds){
+            
+            return true;
+        }
+        return false;
     }
-    
-    public int length(){
-        return this.length;
+
+    @Override
+    public String toString() {
+        return this.artist + ": " + this.name + " (" + this.durationInSeconds + " s)";
     }
-    
+
+
 }
